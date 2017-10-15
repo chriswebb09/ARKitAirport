@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Airport View Controller-->
+        <scene sceneID="tXr-a1-R10">
+            <objects>
+                <viewController id="BV1-FR-VrT" customClass="AirportViewController" customModule="Airport" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PwW-31-p2L">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ve1-Xz-Bdu" customClass="PlaneSceneView" customModule="Airport" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </arscnView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdp-9a-k4X">
+                                <rect key="frame" x="166" y="20" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="v77-eH-VMb">
+                                <rect key="frame" x="0.0" y="341" width="375" height="326"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DH9-CB-5OL">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uy0-ep-JOz">
+                                                <rect key="frame" x="255" y="46" width="120" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Dismiss Map"/>
+                                                <connections>
+                                                    <action selector="dismissMapTapped:" destination="BV1-FR-VrT" eventType="touchUpInside" id="vex-5e-oka"/>
+                                                    <action selector="resetButtonTapped:" destination="BV1-FR-VrT" eventType="touchUpInside" id="azk-ae-Jof"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </view>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8yZ-Uu-tGS">
+                                        <rect key="frame" x="0.0" y="84" width="375" height="242"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="242" id="RV1-WG-9Gc"/>
+                                        </constraints>
+                                    </mapView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="8yZ-Uu-tGS" secondAttribute="bottom" id="D2U-f4-VMf"/>
+                                    <constraint firstItem="DH9-CB-5OL" firstAttribute="top" secondItem="v77-eH-VMb" secondAttribute="top" id="F4D-rc-xgz"/>
+                                    <constraint firstItem="DH9-CB-5OL" firstAttribute="centerX" secondItem="v77-eH-VMb" secondAttribute="centerX" id="XwY-Q6-c4u"/>
+                                    <constraint firstItem="8yZ-Uu-tGS" firstAttribute="centerX" secondItem="v77-eH-VMb" secondAttribute="centerX" id="baT-8K-kBw"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5Y-tv-fL4">
+                                <rect key="frame" x="16" y="15" width="111" height="30"/>
+                                <state key="normal" title="Reset Airport"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="v77-eH-VMb" firstAttribute="trailing" secondItem="ve1-Xz-Bdu" secondAttribute="trailing" id="3Xk-RI-hjP"/>
+                            <constraint firstItem="L5Y-tv-fL4" firstAttribute="leading" secondItem="PwW-31-p2L" secondAttribute="leadingMargin" id="ET6-qV-iBk"/>
+                            <constraint firstItem="ve1-Xz-Bdu" firstAttribute="top" secondItem="PwW-31-p2L" secondAttribute="top" id="FRT-dR-TdT"/>
+                            <constraint firstItem="v77-eH-VMb" firstAttribute="bottom" secondItem="II6-VO-LrX" secondAttribute="bottom" id="HVa-Y0-q7P"/>
+                            <constraint firstItem="L5Y-tv-fL4" firstAttribute="centerY" secondItem="Jdp-9a-k4X" secondAttribute="centerY" id="OX0-zM-BfS"/>
+                            <constraint firstItem="Jdp-9a-k4X" firstAttribute="leading" secondItem="L5Y-tv-fL4" secondAttribute="trailing" constant="39" id="RrP-en-lHT"/>
+                            <constraint firstItem="v77-eH-VMb" firstAttribute="leading" secondItem="PwW-31-p2L" secondAttribute="leading" id="Tq9-aD-iTq"/>
+                            <constraint firstItem="v77-eH-VMb" firstAttribute="top" secondItem="PwW-31-p2L" secondAttribute="top" constant="341" id="bK7-JR-esd"/>
+                            <constraint firstItem="v77-eH-VMb" firstAttribute="centerX" secondItem="Jdp-9a-k4X" secondAttribute="centerX" id="gs1-Wq-KfX"/>
+                            <constraint firstItem="v77-eH-VMb" firstAttribute="bottom" secondItem="ve1-Xz-Bdu" secondAttribute="bottom" id="k0Q-3i-fmh"/>
+                            <constraint firstAttribute="trailing" secondItem="v77-eH-VMb" secondAttribute="trailing" id="lUj-pH-9v2"/>
+                            <constraint firstItem="Jdp-9a-k4X" firstAttribute="top" secondItem="II6-VO-LrX" secondAttribute="top" id="ojk-Hc-bBz"/>
+                            <constraint firstItem="v77-eH-VMb" firstAttribute="leading" secondItem="ve1-Xz-Bdu" secondAttribute="leading" id="tJY-51-mMM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="II6-VO-LrX"/>
+                    </view>
+                    <connections>
+                        <outlet property="dismissMapButton" destination="uy0-ep-JOz" id="aQF-6N-abW"/>
+                        <outlet property="mapView" destination="8yZ-Uu-tGS" id="i84-td-DK5"/>
+                        <outlet property="resetButton" destination="L5Y-tv-fL4" id="u4g-xC-xnZ"/>
+                        <outlet property="sceneView" destination="ve1-Xz-Bdu" id="rRN-dr-yYi"/>
+                        <outlet property="statusLabel" destination="Jdp-9a-k4X" id="IdI-Vp-I8D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="91.304347826086968"/>
+        </scene>
+    </scenes>
+</document>
