@@ -2,13 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:ww11.dae">
-   </FileRef>
-   <Group
-      location = "container:"
-      name = "New Group">
-   </Group>
-   <FileRef
       location = "self:Airport.xcodeproj">
    </FileRef>
 </Workspace>

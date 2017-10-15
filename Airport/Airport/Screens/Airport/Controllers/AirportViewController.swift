@@ -45,8 +45,6 @@ class AirportViewController: UIViewController {
         runSession()
         sceneView.setupScene()
         locationService.delegate = self
-        sceneView.setupAirport()
-        sceneView.setupPlane()
         locationService.startUpdatingLocation(locationManager: locationService.locationManager!)
         press = UILongPressGestureRecognizer(target: self, action: #selector(handleMapTap(gesture:)))
         press.minimumPressDuration = 0.35
@@ -76,10 +74,16 @@ extension AirportViewController: ARSCNViewDelegate {
     // Override to create and configure nodes for anchors added to the view's session.
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        if !self.airportPlaced {
+        if !self.airportPlaced && destinationLocation != nil {
             DispatchQueue.main.async {
                 if let planeAnchor = anchor as? ARPlaneAnchor {
-                    let planeNode = createPlaneNode(center: planeAnchor.center, extent: planeAnchor.extent)
+                    let plane = SCNPlane(width: CGFloat(planeAnchor.extent.x), height: CGFloat(planeAnchor.extent.z))
+                    let planeMaterial = SCNMaterial()
+                    planeMaterial.diffuse.contents = UIColor.clear.withAlphaComponent(0.0)
+                    plane.materials = [planeMaterial]
+                    let planeNode = SCNNode(geometry: plane)
+                    planeNode.position = SCNVector3Make(planeAnchor.center.x, 0, planeAnchor.center.z)
+                    planeNode.transform = SCNMatrix4MakeRotation(-Float.pi / 2, 1, 0, 0)
                     node.addChildNode(planeNode)
                     self.sceneView.positionAirport(node: node)
                     self.airportPlaced = true

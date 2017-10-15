@@ -29,32 +29,10 @@ class PlaneSceneView: ARSCNView {
     var markerOne: SCNNode!
     var markerTwo: SCNNode!
     
-    func setupAirport() {
-        airportNode = nodeWithModelName("art.scnassets/airfield.scn")
-    }
-    
-    func positionAirport(position: SCNVector3) {
-        DispatchQueue.main.async {
-            self.airportNode.position = position
-            self.scene.rootNode.addChildNode(self.airportNode)
-        }
-    }
-    
-    func positionAirport(node: SCNNode) {
-        DispatchQueue.main.async {
-            self.airportNode.position = node.position
-            self.markerOne = self.airportNode.childNode(withName: "markerOne", recursively: true)
-            self.markerTwo = self.airportNode.childNode(withName: "markerTwo", recursively: true)
-            self.planeNode.position = node.position
-            for airplaneNode in self.nodes {
-                airplaneNode.position = node.position
-            }
-            node.addChildNode(self.airportNode)
-        }
-    }
-    
     func setupScene() {
         scene = SCNScene()
+        airportNode = nodeWithModelName("art.scnassets/airfield.scn")
+        setupPlane()
     }
     
     func setupPlane() {
@@ -84,9 +62,17 @@ class PlaneSceneView: ARSCNView {
         }
     }
     
-    func stopEngine() {
-        engineNode.runAction(SCNAction.rotateBy(x: 0, y: 0, z: -85, duration: 0.5), forKey: "engine")
-        engineNode.removeAnimation(forKey: "engine")
+    func positionAirport(node: SCNNode) {
+        DispatchQueue.main.async {
+            self.airportNode.position = node.position
+            self.markerOne = self.airportNode.childNode(withName: "markerOne", recursively: true)
+            self.markerTwo = self.airportNode.childNode(withName: "markerTwo", recursively: true)
+            self.planeNode.position = node.position
+            for airplaneNode in self.nodes {
+                airplaneNode.position = node.position
+            }
+            node.addChildNode(self.airportNode)
+        }
     }
     
     func moveForward() {
@@ -99,11 +85,12 @@ class PlaneSceneView: ARSCNView {
     }
     
     func takeOffFrom(location: CLLocation, for destination: CLLocation) {
+        engineNode.isHidden = true
         DispatchQueue.main.async {
             let bearing = location.bearingToLocationRadian(destination)
             let speed = Speed()
             SCNTransaction.begin()
-            SCNTransaction.animationDuration = speed.getTime(for: 6, and: 100)
+            SCNTransaction.animationDuration = speed.getTime(for: 6, and: 50)
             self.planeNode.position = SCNVector3(self.planeNode.position.x, self.planeNode.position.y, self.planeNode.position.z - 6)
             SCNTransaction.completionBlock = {
                 self.rotateFromBearing(bearing: bearing, for: location, and: destination)
@@ -116,31 +103,31 @@ class PlaneSceneView: ARSCNView {
         DispatchQueue.main.async {
             SCNTransaction.begin()
             SCNTransaction.animationDuration = 1
-            SCNTransaction.completionBlock = {
-                self.moveFrom(origin: origin, to: destination)
-            }
             for node in self.nodes {
                 let rotation = SCNMatrix4MakeRotation(Float(-1 * bearing), 0, 1, 0)
                 node.transform = SCNMatrix4Mult(node.transform, rotation)
             }
             
+            SCNTransaction.completionBlock = {
+                self.moveFrom(origin: origin, to: destination)
+            }
             SCNTransaction.commit()
         }
     }
     
     func moveFrom(origin: CLLocation, to destination: CLLocation) {
-        print("Distance: \(origin.distance(from: destination))")
         let speed = Speed()
         DispatchQueue.main.async {
             SCNTransaction.begin()
             let distance = origin.distance(from: destination)
-            let duration = speed.getTime(for: 150, and: distance)
-            SCNTransaction.animationDuration = duration
+            SCNTransaction.animationDuration = speed.getTime(for: distance, and: 20)
+            print(speed.getTime(for: distance, and: 20))
             let translation = MatrixHelper.transformMatrix(for: matrix_identity_float4x4, originLocation: origin, location: destination)
             let position = SCNVector3.positionFromTransform(translation)
             for node in self.nodes {
                 node.position = position
             }
+            self.planeNode.position = position
             SCNTransaction.commit()
         }
     }
