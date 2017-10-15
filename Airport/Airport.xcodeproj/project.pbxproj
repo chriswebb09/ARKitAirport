@@ -16,6 +16,8 @@
 		A7D607231F93082300D6F46F /* SCNVector3+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D607221F93082300D6F46F /* SCNVector3+Extension.swift */; };
 		A7D607251F93084800D6F46F /* CLLocation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D607241F93084800D6F46F /* CLLocation+Extension.swift */; };
 		A7D607271F9308BA00D6F46F /* MessagePresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D607261F9308BA00D6F46F /* MessagePresenting.swift */; };
+		A7D607291F930CA300D6F46F /* Mapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D607281F930CA300D6F46F /* Mapable.swift */; };
+		A7D6072B1F930DCB00D6F46F /* POIAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D6072A1F930DCB00D6F46F /* POIAnnotation.swift */; };
 		A7D84CC91F9012E400E4FF72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D84CC81F9012E400E4FF72 /* AppDelegate.swift */; };
 		A7D84CCB1F9012E400E4FF72 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = A7D84CCA1F9012E400E4FF72 /* art.scnassets */; };
 		A7D84CCD1F9012E400E4FF72 /* AirportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D84CCC1F9012E400E4FF72 /* AirportViewController.swift */; };
@@ -34,6 +36,8 @@
 		A7D607221F93082300D6F46F /* SCNVector3+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector3+Extension.swift"; sourceTree = "<group>"; };
 		A7D607241F93084800D6F46F /* CLLocation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extension.swift"; sourceTree = "<group>"; };
 		A7D607261F9308BA00D6F46F /* MessagePresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePresenting.swift; sourceTree = "<group>"; };
+		A7D607281F930CA300D6F46F /* Mapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapable.swift; sourceTree = "<group>"; };
+		A7D6072A1F930DCB00D6F46F /* POIAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIAnnotation.swift; sourceTree = "<group>"; };
 		A7D84CC51F9012E400E4FF72 /* Airport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Airport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7D84CC81F9012E400E4FF72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7D84CCA1F9012E400E4FF72 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -75,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				A7D84CC81F9012E400E4FF72 /* AppDelegate.swift */,
+				A7D6072A1F930DCB00D6F46F /* POIAnnotation.swift */,
 				A7D84CCA1F9012E400E4FF72 /* art.scnassets */,
 				A7D84CCC1F9012E400E4FF72 /* AirportViewController.swift */,
 				A7D84CCE1F9012E400E4FF72 /* Main.storyboard */,
@@ -90,6 +95,7 @@
 				A78E77BF1F925E0600697176 /* PlaneSceneView.swift */,
 				A7D6071E1F92FDCB00D6F46F /* Helpers.swift */,
 				A7D607261F9308BA00D6F46F /* MessagePresenting.swift */,
+				A7D607281F930CA300D6F46F /* Mapable.swift */,
 			);
 			path = Airport;
 			sourceTree = "<group>";
@@ -177,6 +183,8 @@
 				A7D84CCD1F9012E400E4FF72 /* AirportViewController.swift in Sources */,
 				A78E77BC1F925DBA00697176 /* LocationService.swift in Sources */,
 				A7D84CC91F9012E400E4FF72 /* AppDelegate.swift in Sources */,
+				A7D607291F930CA300D6F46F /* Mapable.swift in Sources */,
+				A7D6072B1F930DCB00D6F46F /* POIAnnotation.swift in Sources */,
 				A7D607251F93084800D6F46F /* CLLocation+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
