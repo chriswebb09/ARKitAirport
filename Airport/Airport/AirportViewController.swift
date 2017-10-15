@@ -153,7 +153,7 @@ extension AirportViewController: Mapable {
         // Convert map tap point to coordinate
         let coord: CLLocationCoordinate2D = mapView.convert(touchPoint, toCoordinateFrom: mapView)
         destinationLocation = CLLocation(latitude: coord.latitude, longitude: coord.longitude)
-        planeCanFly = true 
+        planeCanFly = true
     }
 }
 
@@ -214,6 +214,9 @@ extension AirportViewController: MKMapViewDelegate {
         centerMapInInitialCoordinates()
         showPointsOfInterestInMap(currentTripLegs: currentTripLegs)
         addMapAnnotations()
+        mapView.isHidden = !mapDismissed
+        mapDismissed = !mapDismissed
+        view.layoutIfNeeded()
     }
     
     // Gets coordinates between two locations at set intervals

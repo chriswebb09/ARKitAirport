@@ -18,6 +18,10 @@
 		A7D607271F9308BA00D6F46F /* MessagePresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D607261F9308BA00D6F46F /* MessagePresenting.swift */; };
 		A7D607291F930CA300D6F46F /* Mapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D607281F930CA300D6F46F /* Mapable.swift */; };
 		A7D6072B1F930DCB00D6F46F /* POIAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D6072A1F930DCB00D6F46F /* POIAnnotation.swift */; };
+		A7D6072D1F931A5A00D6F46F /* CLLocationCoordinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D6072C1F931A5A00D6F46F /* CLLocationCoordinate2D+Extension.swift */; };
+		A7D6072F1F931A7B00D6F46F /* MKRouteStep+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D6072E1F931A7B00D6F46F /* MKRouteStep+Extension.swift */; };
+		A7D607311F931A9800D6F46F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D607301F931A9800D6F46F /* Constants.swift */; };
+		A7D607331F931AB300D6F46F /* LocationServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D607321F931AB300D6F46F /* LocationServiceDelegate.swift */; };
 		A7D84CC91F9012E400E4FF72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D84CC81F9012E400E4FF72 /* AppDelegate.swift */; };
 		A7D84CCB1F9012E400E4FF72 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = A7D84CCA1F9012E400E4FF72 /* art.scnassets */; };
 		A7D84CCD1F9012E400E4FF72 /* AirportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D84CCC1F9012E400E4FF72 /* AirportViewController.swift */; };
@@ -38,6 +42,10 @@
 		A7D607261F9308BA00D6F46F /* MessagePresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePresenting.swift; sourceTree = "<group>"; };
 		A7D607281F930CA300D6F46F /* Mapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapable.swift; sourceTree = "<group>"; };
 		A7D6072A1F930DCB00D6F46F /* POIAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIAnnotation.swift; sourceTree = "<group>"; };
+		A7D6072C1F931A5A00D6F46F /* CLLocationCoordinate2D+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extension.swift"; sourceTree = "<group>"; };
+		A7D6072E1F931A7B00D6F46F /* MKRouteStep+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKRouteStep+Extension.swift"; sourceTree = "<group>"; };
+		A7D607301F931A9800D6F46F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A7D607321F931AB300D6F46F /* LocationServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceDelegate.swift; sourceTree = "<group>"; };
 		A7D84CC51F9012E400E4FF72 /* Airport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Airport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7D84CC81F9012E400E4FF72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7D84CCA1F9012E400E4FF72 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -87,15 +95,19 @@
 				A7D84CD31F9012E400E4FF72 /* LaunchScreen.storyboard */,
 				A7D84CD61F9012E400E4FF72 /* Info.plist */,
 				A78E77B91F925D8B00697176 /* MatrixHelper.swift */,
+				A7D607301F931A9800D6F46F /* Constants.swift */,
+				A7D6072E1F931A7B00D6F46F /* MKRouteStep+Extension.swift */,
 				A7D607241F93084800D6F46F /* CLLocation+Extension.swift */,
 				A7D607221F93082300D6F46F /* SCNVector3+Extension.swift */,
 				A7D607201F93080A00D6F46F /* Double+Extension.swift */,
 				A78E77BB1F925DBA00697176 /* LocationService.swift */,
+				A7D607321F931AB300D6F46F /* LocationServiceDelegate.swift */,
 				A78E77BD1F925DD300697176 /* NavigationService.swift */,
 				A78E77BF1F925E0600697176 /* PlaneSceneView.swift */,
 				A7D6071E1F92FDCB00D6F46F /* Helpers.swift */,
 				A7D607261F9308BA00D6F46F /* MessagePresenting.swift */,
 				A7D607281F930CA300D6F46F /* Mapable.swift */,
+				A7D6072C1F931A5A00D6F46F /* CLLocationCoordinate2D+Extension.swift */,
 			);
 			path = Airport;
 			sourceTree = "<group>";
@@ -176,14 +188,18 @@
 				A78E77C01F925E0600697176 /* PlaneSceneView.swift in Sources */,
 				A7D6071F1F92FDCB00D6F46F /* Helpers.swift in Sources */,
 				A78E77BE1F925DD300697176 /* NavigationService.swift in Sources */,
+				A7D607331F931AB300D6F46F /* LocationServiceDelegate.swift in Sources */,
 				A7D607231F93082300D6F46F /* SCNVector3+Extension.swift in Sources */,
 				A7D607271F9308BA00D6F46F /* MessagePresenting.swift in Sources */,
 				A78E77BA1F925D8B00697176 /* MatrixHelper.swift in Sources */,
 				A7D607211F93080A00D6F46F /* Double+Extension.swift in Sources */,
+				A7D607311F931A9800D6F46F /* Constants.swift in Sources */,
 				A7D84CCD1F9012E400E4FF72 /* AirportViewController.swift in Sources */,
 				A78E77BC1F925DBA00697176 /* LocationService.swift in Sources */,
+				A7D6072D1F931A5A00D6F46F /* CLLocationCoordinate2D+Extension.swift in Sources */,
 				A7D84CC91F9012E400E4FF72 /* AppDelegate.swift in Sources */,
 				A7D607291F930CA300D6F46F /* Mapable.swift in Sources */,
+				A7D6072F1F931A7B00D6F46F /* MKRouteStep+Extension.swift in Sources */,
 				A7D6072B1F930DCB00D6F46F /* POIAnnotation.swift in Sources */,
 				A7D607251F93084800D6F46F /* CLLocation+Extension.swift in Sources */,
 			);

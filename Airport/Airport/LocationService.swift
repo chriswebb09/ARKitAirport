@@ -9,11 +9,6 @@
 import Foundation
 import CoreLocation
 
-protocol LocationServiceDelegate: class {
-    func trackingLocation(for currentLocation: CLLocation)
-    func trackingLocationDidFail(with error: Error)
-}
-
 final class LocationService: NSObject, CLLocationManagerDelegate {
     
     var locationManager: CLLocationManager?
@@ -31,7 +26,7 @@ final class LocationService: NSObject, CLLocationManagerDelegate {
         guard let locationManager = locationManager else { return }
         
         requestAuthorization(locationManager: locationManager)
-
+        
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager.distanceFilter = kCLDistanceFilterNone
         locationManager.headingFilter = kCLHeadingFilterNone

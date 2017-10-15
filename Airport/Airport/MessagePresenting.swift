@@ -6,7 +6,6 @@
 //  Copyright © 2017 Christopher Webb-Orenstein. All rights reserved.
 //
 
-
 import UIKit
 
 protocol MessagePresenting {

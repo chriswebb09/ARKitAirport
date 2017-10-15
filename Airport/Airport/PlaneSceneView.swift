@@ -99,20 +99,22 @@ class PlaneSceneView: ARSCNView {
     
     func takeOffFrom(location: CLLocation, for destination: CLLocation) {
         let bearing = location.bearingToLocationRadian(destination)
-        CATransaction.begin()
+        SCNTransaction.begin()
         SCNTransaction.animationDuration = 0.5
+        self.planeNode.position = SCNVector3(self.planeNode.position.x, self.planeNode.position.y, self.planeNode.position.z - 0.01)
+        self.planeNode.position = SCNVector3(self.planeNode.position.x, self.planeNode.position.y, self.planeNode.position.z - 0.1)
         self.planeNode.position = SCNVector3(self.planeNode.position.x, self.planeNode.position.y, self.planeNode.position.z - 0.5)
         SCNTransaction.completionBlock = {
             self.rotateFromBearing(bearing: bearing, for: location, and: destination)
         }
         SCNTransaction.commit()
     }
-
+    
     func rotateFromBearing(bearing: Double, for origin: CLLocation, and destination: CLLocation) {
         DispatchQueue.main.async {
             SCNTransaction.begin()
             SCNTransaction.animationDuration = 1
-             SCNTransaction.completionBlock = {
+            SCNTransaction.completionBlock = {
                 self.moveFrom(origin: origin, to: destination)
             }
             
@@ -126,6 +128,7 @@ class PlaneSceneView: ARSCNView {
     }
     
     func moveFrom(origin: CLLocation, to destination: CLLocation) {
+        print("Distance: \(origin.distance(from: destination))")
         DispatchQueue.main.async {
             SCNTransaction.begin()
             SCNTransaction.animationDuration = 20

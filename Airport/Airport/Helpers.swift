@@ -30,4 +30,3 @@ func createPlaneNode(center: vector_float3, extent: vector_float3) -> SCNNode {
 func nodeWithModelName(_ modelName: String) -> SCNNode {
     return SCNScene(named: modelName)!.rootNode.clone()
 }
-
