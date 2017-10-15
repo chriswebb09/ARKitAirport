@@ -44,6 +44,7 @@ class PlaneSceneView: ARSCNView {
         DispatchQueue.main.async {
             self.airportNode.position = node.position
             self.markerOne = self.airportNode.childNode(withName: "markerOne", recursively: true)
+            self.markerTwo = self.airportNode.childNode(withName: "markerTwo", recursively: true)
             self.planeNode.position = node.position
             for airplaneNode in self.nodes {
                 airplaneNode.position = node.position
@@ -98,16 +99,17 @@ class PlaneSceneView: ARSCNView {
     }
     
     func takeOffFrom(location: CLLocation, for destination: CLLocation) {
-        let bearing = location.bearingToLocationRadian(destination)
-        SCNTransaction.begin()
-        SCNTransaction.animationDuration = 0.5
-        self.planeNode.position = SCNVector3(self.planeNode.position.x, self.planeNode.position.y, self.planeNode.position.z - 0.01)
-        self.planeNode.position = SCNVector3(self.planeNode.position.x, self.planeNode.position.y, self.planeNode.position.z - 0.1)
-        self.planeNode.position = SCNVector3(self.planeNode.position.x, self.planeNode.position.y, self.planeNode.position.z - 0.5)
-        SCNTransaction.completionBlock = {
-            self.rotateFromBearing(bearing: bearing, for: location, and: destination)
+        DispatchQueue.main.async {
+            let bearing = location.bearingToLocationRadian(destination)
+            let speed = Speed()
+            SCNTransaction.begin()
+            SCNTransaction.animationDuration = speed.getTime(for: 6, and: 100)
+            self.planeNode.position = SCNVector3(self.planeNode.position.x, self.planeNode.position.y, self.planeNode.position.z - 6)
+            SCNTransaction.completionBlock = {
+                self.rotateFromBearing(bearing: bearing, for: location, and: destination)
+            }
+            SCNTransaction.commit()
         }
-        SCNTransaction.commit()
     }
     
     func rotateFromBearing(bearing: Double, for origin: CLLocation, and destination: CLLocation) {
@@ -117,7 +119,6 @@ class PlaneSceneView: ARSCNView {
             SCNTransaction.completionBlock = {
                 self.moveFrom(origin: origin, to: destination)
             }
-            
             for node in self.nodes {
                 let rotation = SCNMatrix4MakeRotation(Float(-1 * bearing), 0, 1, 0)
                 node.transform = SCNMatrix4Mult(node.transform, rotation)
@@ -129,9 +130,12 @@ class PlaneSceneView: ARSCNView {
     
     func moveFrom(origin: CLLocation, to destination: CLLocation) {
         print("Distance: \(origin.distance(from: destination))")
+        let speed = Speed()
         DispatchQueue.main.async {
             SCNTransaction.begin()
-            SCNTransaction.animationDuration = 20
+            let distance = origin.distance(from: destination)
+            let duration = speed.getTime(for: 150, and: distance)
+            SCNTransaction.animationDuration = duration
             let translation = MatrixHelper.transformMatrix(for: matrix_identity_float4x4, originLocation: origin, location: destination)
             let position = SCNVector3.positionFromTransform(translation)
             for node in self.nodes {

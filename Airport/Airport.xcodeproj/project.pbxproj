@@ -22,6 +22,7 @@
 		A7D6072F1F931A7B00D6F46F /* MKRouteStep+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D6072E1F931A7B00D6F46F /* MKRouteStep+Extension.swift */; };
 		A7D607311F931A9800D6F46F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D607301F931A9800D6F46F /* Constants.swift */; };
 		A7D607331F931AB300D6F46F /* LocationServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D607321F931AB300D6F46F /* LocationServiceDelegate.swift */; };
+		A7D6073C1F931D9F00D6F46F /* Speed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D6073B1F931D9F00D6F46F /* Speed.swift */; };
 		A7D84CC91F9012E400E4FF72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D84CC81F9012E400E4FF72 /* AppDelegate.swift */; };
 		A7D84CCB1F9012E400E4FF72 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = A7D84CCA1F9012E400E4FF72 /* art.scnassets */; };
 		A7D84CCD1F9012E400E4FF72 /* AirportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D84CCC1F9012E400E4FF72 /* AirportViewController.swift */; };
@@ -46,6 +47,7 @@
 		A7D6072E1F931A7B00D6F46F /* MKRouteStep+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKRouteStep+Extension.swift"; sourceTree = "<group>"; };
 		A7D607301F931A9800D6F46F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A7D607321F931AB300D6F46F /* LocationServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceDelegate.swift; sourceTree = "<group>"; };
+		A7D6073B1F931D9F00D6F46F /* Speed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speed.swift; sourceTree = "<group>"; };
 		A7D84CC51F9012E400E4FF72 /* Airport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Airport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7D84CC81F9012E400E4FF72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7D84CCA1F9012E400E4FF72 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				A7D607371F931B7600D6F46F /* Services */,
 				A7D607351F931B5E00D6F46F /* Protocol */,
 				A7D607341F931B4200D6F46F /* Extensions */,
+				A7D6073B1F931D9F00D6F46F /* Speed.swift */,
 			);
 			path = Airport;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				A78E77C01F925E0600697176 /* PlaneSceneView.swift in Sources */,
 				A7D6071F1F92FDCB00D6F46F /* Helpers.swift in Sources */,
 				A78E77BE1F925DD300697176 /* NavigationService.swift in Sources */,
+				A7D6073C1F931D9F00D6F46F /* Speed.swift in Sources */,
 				A7D607331F931AB300D6F46F /* LocationServiceDelegate.swift in Sources */,
 				A7D607231F93082300D6F46F /* SCNVector3+Extension.swift in Sources */,
 				A7D607271F9308BA00D6F46F /* MessagePresenting.swift in Sources */,

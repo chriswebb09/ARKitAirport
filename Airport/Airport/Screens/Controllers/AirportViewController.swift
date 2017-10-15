@@ -44,7 +44,6 @@ class AirportViewController: UIViewController {
         super.viewDidLoad()
         runSession()
         sceneView.setupScene()
-      //  destinationLocation = CLLocation(latitude: 40.737359, longitude: -73.979086)
         locationService.delegate = self
         sceneView.setupAirport()
         sceneView.setupPlane()
@@ -96,9 +95,6 @@ extension AirportViewController: MessagePresenting {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if airportPlaced && planeCanFly {
-            sceneView.moveForward()
-            sceneView.moveForward()
-            sceneView.moveForward()
             sceneView.takeOffFrom(location: startingLocation, for: destinationLocation)
         } else if !airportPlaced {
             presentMessage(title: "Still Building Airport...", message: "Looks like we're still building the airport. Try moving your phone to speed up the process.")
@@ -115,6 +111,7 @@ extension AirportViewController: MessagePresenting {
     }
     
     func sessionInterruptionEnded(_ session: ARSession) {
+        presentMessage(title: "Interruption Ended", message: "Interruption Ended")
         // Reset tracking and/or remove existing anchors if consistent tracking is required
     }
     
@@ -137,7 +134,7 @@ extension AirportViewController: LocationServiceDelegate {
     }
     
     func trackingLocationDidFail(with error: Error) {
-        print(error.localizedDescription)
+        presentMessage(title: "Error", message: error.localizedDescription)
     }
 }
 
@@ -210,13 +207,14 @@ extension AirportViewController: MKMapViewDelegate {
         for leg in currentTripLegs {
             update(intermediary: leg)
         }
-        
-        centerMapInInitialCoordinates()
-        showPointsOfInterestInMap(currentTripLegs: currentTripLegs)
-        addMapAnnotations()
-        mapView.isHidden = !mapDismissed
-        mapDismissed = !mapDismissed
-        view.layoutIfNeeded()
+        DispatchQueue.main.async {
+            self.centerMapInInitialCoordinates()
+            self.showPointsOfInterestInMap(currentTripLegs: self.currentTripLegs)
+            self.addMapAnnotations()
+            self.mapView.isHidden = !self.mapDismissed
+            self.mapDismissed = !self.mapDismissed
+            self.view.layoutIfNeeded()
+        }
     }
     
     // Gets coordinates between two locations at set intervals
@@ -229,8 +227,10 @@ extension AirportViewController: MKMapViewDelegate {
         mapView.removeAnnotations(mapView.annotations)
         for tripLeg in currentTripLegs {
             for coordinate in tripLeg {
-                let poi = POIAnnotation(coordinate: coordinate, name: String(describing: coordinate))
-                mapView.addAnnotation(poi)
+                DispatchQueue.main.async {
+                    let poi = POIAnnotation(coordinate: coordinate, name: String(describing: coordinate))
+                    self.mapView.addAnnotation(poi)
+                }
             }
         }
     }
