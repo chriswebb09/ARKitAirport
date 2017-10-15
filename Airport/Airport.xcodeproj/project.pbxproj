@@ -75,8 +75,7 @@
 				A7D607201F93080A00D6F46F /* Double+Extension.swift */,
 				A7D6072E1F931A7B00D6F46F /* MKRouteStep+Extension.swift */,
 				A7D607221F93082300D6F46F /* SCNVector3+Extension.swift */,
-				A7D607241F93084800D6F46F /* CLLocation+Extension.swift */,
-				A7D6072C1F931A5A00D6F46F /* CLLocationCoordinate2D+Extension.swift */,
+				A7D6073D1F932BA600D6F46F /* CoreLocation */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -93,6 +92,7 @@
 		A7D607361F931B6C00D6F46F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A7D6073B1F931D9F00D6F46F /* Speed.swift */,
 				A78E77B91F925D8B00697176 /* MatrixHelper.swift */,
 			);
 			path = Helpers;
@@ -128,10 +128,27 @@
 		A7D6073A1F931BB200D6F46F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				A7D6073E1F932BB900D6F46F /* Airport */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		A7D6073D1F932BA600D6F46F /* CoreLocation */ = {
+			isa = PBXGroup;
+			children = (
+				A7D607241F93084800D6F46F /* CLLocation+Extension.swift */,
+				A7D6072C1F931A5A00D6F46F /* CLLocationCoordinate2D+Extension.swift */,
+			);
+			path = CoreLocation;
+			sourceTree = "<group>";
+		};
+		A7D6073E1F932BB900D6F46F /* Airport */ = {
+			isa = PBXGroup;
+			children = (
 				A78E77BF1F925E0600697176 /* PlaneSceneView.swift */,
 				A7D607391F931B9900D6F46F /* Controllers */,
 			);
-			path = Screens;
+			path = Airport;
 			sourceTree = "<group>";
 		};
 		A7D84CBC1F9012E400E4FF72 = {
@@ -166,7 +183,6 @@
 				A7D607371F931B7600D6F46F /* Services */,
 				A7D607351F931B5E00D6F46F /* Protocol */,
 				A7D607341F931B4200D6F46F /* Extensions */,
-				A7D6073B1F931D9F00D6F46F /* Speed.swift */,
 			);
 			path = Airport;
 			sourceTree = "<group>";

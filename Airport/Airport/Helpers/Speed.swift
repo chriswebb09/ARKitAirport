@@ -12,7 +12,7 @@ struct Speed {
     
     // Speed = Distance ÷ Time
     
-    func getSpped(for distance: Double, and time: Double) -> Double {
+    func getSpeed(for distance: Double, and time: Double) -> Double {
         return distance / time
     }
     
