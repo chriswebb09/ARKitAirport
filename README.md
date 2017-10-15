@@ -10,7 +10,7 @@ Tap on the map and see a plane take off from the AR airport and fly to that plac
 - [x] When User Taps Screen, Airplane Accelerates/Takes Off
 - [x] Airplane Orients Itself Towards Coordinates Of Location On Map 
 - [x] Airplane Flys To Location
-- [ ] When User Is In Range Of Airplane And Destination — DetectHorizontal Plane
+- [ ] When User Is In Range Of Airplane And Destination/DetectHorizontal Plane
 - [ ] Place Airport Model Node On Plane
 - [ ] Airplane Lands On Runway And Breaks
 
