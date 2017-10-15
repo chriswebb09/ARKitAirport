@@ -67,6 +67,71 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A7D607341F931B4200D6F46F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A7D607201F93080A00D6F46F /* Double+Extension.swift */,
+				A7D6072E1F931A7B00D6F46F /* MKRouteStep+Extension.swift */,
+				A7D607221F93082300D6F46F /* SCNVector3+Extension.swift */,
+				A7D607241F93084800D6F46F /* CLLocation+Extension.swift */,
+				A7D6072C1F931A5A00D6F46F /* CLLocationCoordinate2D+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A7D607351F931B5E00D6F46F /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				A7D607261F9308BA00D6F46F /* MessagePresenting.swift */,
+				A7D607281F930CA300D6F46F /* Mapable.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		A7D607361F931B6C00D6F46F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A78E77B91F925D8B00697176 /* MatrixHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A7D607371F931B7600D6F46F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A78E77BD1F925DD300697176 /* NavigationService.swift */,
+				A7D607321F931AB300D6F46F /* LocationServiceDelegate.swift */,
+				A78E77BB1F925DBA00697176 /* LocationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A7D607381F931B9100D6F46F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A7D6071E1F92FDCB00D6F46F /* Helpers.swift */,
+				A7D6072A1F930DCB00D6F46F /* POIAnnotation.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A7D607391F931B9900D6F46F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A7D84CCC1F9012E400E4FF72 /* AirportViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A7D6073A1F931BB200D6F46F /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				A78E77BF1F925E0600697176 /* PlaneSceneView.swift */,
+				A7D607391F931B9900D6F46F /* Controllers */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 		A7D84CBC1F9012E400E4FF72 = {
 			isa = PBXGroup;
 			children = (
@@ -87,27 +152,18 @@
 			isa = PBXGroup;
 			children = (
 				A7D84CC81F9012E400E4FF72 /* AppDelegate.swift */,
-				A7D6072A1F930DCB00D6F46F /* POIAnnotation.swift */,
+				A7D607381F931B9100D6F46F /* Models */,
 				A7D84CCA1F9012E400E4FF72 /* art.scnassets */,
-				A7D84CCC1F9012E400E4FF72 /* AirportViewController.swift */,
+				A7D6073A1F931BB200D6F46F /* Screens */,
 				A7D84CCE1F9012E400E4FF72 /* Main.storyboard */,
 				A7D84CD11F9012E400E4FF72 /* Assets.xcassets */,
 				A7D84CD31F9012E400E4FF72 /* LaunchScreen.storyboard */,
 				A7D84CD61F9012E400E4FF72 /* Info.plist */,
-				A78E77B91F925D8B00697176 /* MatrixHelper.swift */,
+				A7D607361F931B6C00D6F46F /* Helpers */,
 				A7D607301F931A9800D6F46F /* Constants.swift */,
-				A7D6072E1F931A7B00D6F46F /* MKRouteStep+Extension.swift */,
-				A7D607241F93084800D6F46F /* CLLocation+Extension.swift */,
-				A7D607221F93082300D6F46F /* SCNVector3+Extension.swift */,
-				A7D607201F93080A00D6F46F /* Double+Extension.swift */,
-				A78E77BB1F925DBA00697176 /* LocationService.swift */,
-				A7D607321F931AB300D6F46F /* LocationServiceDelegate.swift */,
-				A78E77BD1F925DD300697176 /* NavigationService.swift */,
-				A78E77BF1F925E0600697176 /* PlaneSceneView.swift */,
-				A7D6071E1F92FDCB00D6F46F /* Helpers.swift */,
-				A7D607261F9308BA00D6F46F /* MessagePresenting.swift */,
-				A7D607281F930CA300D6F46F /* Mapable.swift */,
-				A7D6072C1F931A5A00D6F46F /* CLLocationCoordinate2D+Extension.swift */,
+				A7D607371F931B7600D6F46F /* Services */,
+				A7D607351F931B5E00D6F46F /* Protocol */,
+				A7D607341F931B4200D6F46F /* Extensions */,
 			);
 			path = Airport;
 			sourceTree = "<group>";
