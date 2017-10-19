@@ -88,6 +88,18 @@ extension AirportViewController: ARSCNViewDelegate {
                     node.addChildNode(planeNode)
                     self.sceneView.positionAirport(node: node)
                     self.airportPlaced = true
+                    let bearingDestination  = self.startingLocation.bearingToLocationRadian(self.destinationLocation)
+                    
+                    DispatchQueue.main.async {
+                        SCNTransaction.begin()
+                        SCNTransaction.animationDuration = 1
+                        ///for node in self.nodes {
+                        let rotation = SCNMatrix4MakeRotation(Float(-1 * bearingDestination), 0, 1, 0)
+                        self.sceneView.airportNode.transform = SCNMatrix4Mult(self.sceneView.airportNode.transform, rotation)
+                        self.sceneView.planeNode.transform = SCNMatrix4Mult(self.sceneView.planeNode.transform, rotation)
+                        SCNTransaction.commit()
+                    }
+                    
                 }
             }
         } else {

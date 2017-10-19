@@ -87,10 +87,14 @@ class PlaneSceneView: ARSCNView {
     func takeOffFrom(location: CLLocation, for destination: CLLocation, with legs: [[CLLocationCoordinate2D]]) {
         engineNode.isHidden = true
         let speed = Speed()
-        dump(legs)
         for (index, leg) in legs.enumerated() {
             if index == 0 {
-                print(0)
+                moveForward()
+                moveForward()
+                moveForward()
+                moveForward()
+                moveForward()
+                moveForward()
                 moveForward()
                 moveForward()
                 moveForward()
@@ -111,6 +115,41 @@ class PlaneSceneView: ARSCNView {
                         self.planeNode.position = position
                         SCNTransaction.commit()
                     }
+                }
+            } else if index == legs.count {
+                for (index, coordinate) in leg.enumerated() {
+                    if index == leg.count {
+                        SCNTransaction.begin()
+                        var firstLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+                        let distance = location.distance(from: firstLocation)
+                        let bearing = location.bearingToLocationRadian(firstLocation)
+                        self.rotateFromBearing(bearing: bearing, for: location, and: firstLocation)
+                        SCNTransaction.animationDuration = speed.getTime(for: distance, and: 20)
+                        let translation = MatrixHelper.transformMatrix(for: matrix_identity_float4x4, originLocation: location, location: destination)
+                        let position = SCNVector3.positionFromTransform(translation)
+                        for node in self.nodes {
+                            node.position = position
+                        }
+                        self.planeNode.position = position
+                        SCNTransaction.commit()
+                    } else  {
+                        DispatchQueue.main.async {
+                            SCNTransaction.begin()
+                            var firstLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+                            let distance = location.distance(from: destination)
+                            let bearing = location.bearingToLocationRadian(destination)
+                            self.rotateFromBearing(bearing: bearing, for: location, and: destination)
+                            SCNTransaction.animationDuration = speed.getTime(for: distance, and: 20)
+                            let translation = MatrixHelper.transformMatrix(for: matrix_identity_float4x4, originLocation: location, location: firstLocation)
+                            let position = SCNVector3.positionFromTransform(translation)
+                            for node in self.nodes {
+                                node.position = position
+                            }
+                            self.planeNode.position = position
+                            SCNTransaction.commit()
+                        }
+                    }
+                    
                 }
             } else {
                 for (index, coordinate) in leg.enumerated() {
