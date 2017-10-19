@@ -14,6 +14,12 @@ extension CLLocationCoordinate2D: Equatable {
         return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
     }
     
+//    public static func <(lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+//        let leftLocation = CLLocation(latitude: lhs.latitude, longitude: lhs.longitude)
+//        let rightLocation  CLLocation(latitude: rhs.latitude, longitude:)
+//        return
+//    }
+//
     func bearingToLocationRadian(_ destinationLocation: CLLocationCoordinate2D) -> Double {
         
         let lat1 = latitude.toRadians()

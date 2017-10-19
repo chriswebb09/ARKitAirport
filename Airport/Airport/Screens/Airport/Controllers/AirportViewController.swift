@@ -27,6 +27,7 @@ class AirportViewController: UIViewController {
     
     private var currentTripLegs: [[CLLocationCoordinate2D]] = []
     private var steps: [MKRouteStep] = []
+    
     private var locations: [CLLocation] = []
     var startingLocation: CLLocation!
     
@@ -99,7 +100,7 @@ extension AirportViewController: MessagePresenting {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if airportPlaced && planeCanFly {
-            sceneView.takeOffFrom(location: startingLocation, for: destinationLocation)
+            sceneView.takeOffFrom(location: startingLocation, for: destinationLocation, with: currentTripLegs)
         } else if !airportPlaced {
             presentMessage(title: "Still Building Airport...", message: "Looks like we're still building the airport. Try moving your phone to speed up the process.")
         }

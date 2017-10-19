@@ -10,11 +10,15 @@ import CoreLocation
 
 extension CLLocation {
     
+    convenience init(coord: CLLocationCoordinate2D) {
+        self.init(latitude: coord.latitude, longitude: coord.longitude)
+    }
+    
     func bearingToLocationRadian(_ destinationLocation: CLLocation) -> Double {
         
         let lat1 = self.coordinate.latitude.toRadians()
         let lon1 = self.coordinate.longitude.toRadians()
-        
+ 
         let lat2 = destinationLocation.coordinate.latitude.toRadians()
         let lon2 = destinationLocation.coordinate.longitude.toRadians()
         let dLon = lon2 - lon1
