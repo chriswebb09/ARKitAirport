@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SceneKit
 
 struct LocationConstants {
     static let metersPerRadianLat: Double = 6373000.0
@@ -15,3 +16,15 @@ struct LocationConstants {
 
 
 
+extension float4x4 {
+    
+    public func toMatrix() -> SCNMatrix4 {
+        return SCNMatrix4(self)
+    }
+    
+    public var translation4: SCNVector4 {
+        get {
+            return SCNVector4(columns.3.x, columns.3.y, columns.3.z, columns.3.w)
+        }
+    }
+}

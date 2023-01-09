@@ -12,23 +12,11 @@ import SceneKit
 
 class MatrixHelper {
     
-    //     column 0  column 1  column 2  column 3
-    //         1        0         0       X          x         x + X*w  
-    //         0        1         0       Y      x   y    =    y + Y*w  
-    //         0        0         1       Z          z         z + Z*w  
-    //         0        0         0       1          w            w    
-    
     static func translationMatrix(with matrix: matrix_float4x4, for translation : vector_float4) -> matrix_float4x4 {
         var matrix = matrix
         matrix.columns.3 = translation
         return matrix
     }
-    
-    //      column 0  column 1  column 2  column 3
-    //        cosθ      0       sinθ        0    
-    //         0        1        0          0     
-    //       −sinθ      0       cosθ        0     
-    //         0        0        0          1    
     
     static func rotateAroundY(with matrix: matrix_float4x4, for degrees: Float) -> matrix_float4x4 {
         var matrix : matrix_float4x4 = matrix

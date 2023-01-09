@@ -70,4 +70,20 @@ extension CLLocationCoordinate2D: Equatable {
         }
         return distances
     }
+    
+    static func getIntermediaryLocations2(currentLocation: CLLocation, destinationLocation: CLLocation) -> [CLLocationCoordinate2D] {
+        var distances = [CLLocationCoordinate2D]()
+        let metersIntervalPerNode: Float = 0.6
+        var distance = Float(destinationLocation.distance(from: currentLocation))
+        let bearing = currentLocation.bearingToLocationRadian(destinationLocation)
+        while distance > 0.6 {
+            distance -= metersIntervalPerNode
+            let newLocation = currentLocation.coordinate.coordinate(with: Double(bearing), and: Double(distance))
+            print(newLocation)
+            if !distances.contains(newLocation) {
+                distances.append(newLocation)
+            }
+        }
+        return distances
+    }
 }

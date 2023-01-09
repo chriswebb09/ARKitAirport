@@ -19,7 +19,7 @@ class AirportViewController: UIViewController {
     @IBOutlet weak var dismissMapButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var sceneView: PlaneSceneView!
-    
+    var planeGone = false
     var locationService = LocationService()
     var navigationService: NavigationService = NavigationService()
     private var annotationColor = UIColor.blue
@@ -75,44 +75,79 @@ extension AirportViewController: ARSCNViewDelegate {
     // Override to create and configure nodes for anchors added to the view's session.
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        if !self.airportPlaced && destinationLocation != nil {
-            DispatchQueue.main.async {
-                if let planeAnchor = anchor as? ARPlaneAnchor {
-                    let plane = SCNPlane(width: CGFloat(planeAnchor.extent.x), height: CGFloat(planeAnchor.extent.z))
-                    let planeMaterial = SCNMaterial()
-                    planeMaterial.diffuse.contents = UIColor.clear.withAlphaComponent(0.0)
-                    plane.materials = [planeMaterial]
-                    let planeNode = SCNNode(geometry: plane)
-                    planeNode.position = SCNVector3Make(planeAnchor.center.x, 0, planeAnchor.center.z)
-                    planeNode.transform = SCNMatrix4MakeRotation(-Float.pi / 2, 1, 0, 0)
-                    node.addChildNode(planeNode)
-                    self.sceneView.positionAirport(node: node)
-                    self.airportPlaced = true
-                    let bearingDestination  = self.startingLocation.bearingToLocationRadian(self.destinationLocation)
-                    
-                    DispatchQueue.main.async {
-                        SCNTransaction.begin()
-                        SCNTransaction.animationDuration = 1
-                        ///for node in self.nodes {
-                        let rotation = SCNMatrix4MakeRotation(Float(-1 * bearingDestination), 0, 1, 0)
-                        self.sceneView.airportNode.transform = SCNMatrix4Mult(self.sceneView.airportNode.transform, rotation)
-                        self.sceneView.planeNode.transform = SCNMatrix4Mult(self.sceneView.planeNode.transform, rotation)
-                        SCNTransaction.commit()
-                    }
-                    
-                }
-            }
-        } else {
-            print("airport placed")
+        
+        if !self.airportPlaced, let planeAnchor = anchor as? ARPlaneAnchor {
+            let plane = SCNPlane(width: CGFloat(planeAnchor.extent.x), height: CGFloat(planeAnchor.extent.z))
+            let planeMaterial = SCNMaterial()
+            planeMaterial.diffuse.contents = UIColor.clear.withAlphaComponent(0.0)
+            plane.materials = [planeMaterial]
+            let planeNode = SCNNode(geometry: plane)
+            planeNode.position = SCNVector3Make(planeAnchor.center.x, 0, planeAnchor.center.z)
+            planeNode.transform = SCNMatrix4MakeRotation(-Float.pi / 2, 1, 0, 0)
+            
+            sceneView.positionAirport(node: planeNode, anchor: planeAnchor)
+            
+            
+//            let temp = nodeWithModelName("art.scnassets/airfield.scn")
+//            temp.removeFromParentNode()
+////            positionAirport
+//            //let runway = temp.childNode(withName: "Runway", recursively: true)
+//
+//            planeNode.addChildNode(runway!)
+//            //runway?.transform = planeAnchor.transform.toMatrix()
+//            runway?.position = SCNVector3(x: 0, y: 0, z: 0)
+//
+          //  planeNode.transform =
+             //   planeAnchor.transform.toMatrix()
+            //planeNode.position = SCNVector3(x: planeAnchor.center.x, y: 0, z:0)
+            //SCNVector3(x: planeAnchor.center,, y: planeAnchor.extent.y, z: 0)
+//            print(runway?.worldFront)
+//            print(runway?.position)
+//            print(runway?.orientation)
+           
+            node.addChildNode(planeNode)
+            self.airportPlaced = true
         }
     }
 }
+//        if !self.airportPlaced && destinationLocation != nil {
+//            print("HERE")
+//
+//
+//                //self.sceneView.airportNode.
+////                    self.sceneView.positionAirport(node: node)
+////                    self.airportPlaced = true
+////                    let bearingDestination  = self.startingLocation.bearingToLocationRadian(self.destinationLocation)
+////
+////                    DispatchQueue.main.async {
+////                        SCNTransaction.begin()
+////                        SCNTransaction.animationDuration = 1
+////                        ///for node in self.nodes {
+////                        let rotation = SCNMatrix4MakeRotation(Float(-1 * bearingDestination), 0, 1, 0)
+////                        self.sceneView.airportNode.transform = SCNMatrix4Mult(self.sceneView.airportNode.transform, rotation)
+////                        self.sceneView.planeNode.transform = SCNMatrix4Mult(self.sceneView.planeNode.transform, rotation)
+////                        SCNTransaction.commit()
+////                    }
+//
+//            }
+//        } else {
+//            print(anchor)
+//            print(node)
+//            print("airport placed")
+//        }
+//    }
+    
+    
 
 extension AirportViewController: MessagePresenting {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if airportPlaced && planeCanFly {
-            sceneView.takeOffFrom(location: startingLocation, for: destinationLocation, with: currentTripLegs)
+            if !planeGone {
+                sceneView.takeOffFrom(location: startingLocation, for: destinationLocation, with: currentTripLegs)
+                planeGone = true
+            }
+            
         } else if !airportPlaced {
             presentMessage(title: "Still Building Airport...", message: "Looks like we're still building the airport. Try moving your phone to speed up the process.")
         }
@@ -141,6 +176,8 @@ extension AirportViewController: MessagePresenting {
         mapDismissed = !mapDismissed
         view.layoutIfNeeded()
     }
+    
+    
 }
 
 extension AirportViewController: LocationServiceDelegate {
@@ -236,7 +273,7 @@ extension AirportViewController: MKMapViewDelegate {
     
     // Gets coordinates between two locations at set intervals
     private func setLeg(from previous: CLLocation, to next: CLLocation) -> [CLLocationCoordinate2D] {
-        return CLLocationCoordinate2D.getIntermediaryLocations(currentLocation: previous, destinationLocation: next)
+        return CLLocationCoordinate2D.getIntermediaryLocations2(currentLocation: previous, destinationLocation: next)
     }
     
     // Add POI dots to map

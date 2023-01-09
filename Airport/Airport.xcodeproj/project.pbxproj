@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		946DE0822968DA740063C2D6 /* GameSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946DE0812968DA740063C2D6 /* GameSceneView.swift */; };
 		A78E77BA1F925D8B00697176 /* MatrixHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78E77B91F925D8B00697176 /* MatrixHelper.swift */; };
 		A78E77BC1F925DBA00697176 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78E77BB1F925DBA00697176 /* LocationService.swift */; };
 		A78E77BE1F925DD300697176 /* NavigationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78E77BD1F925DD300697176 /* NavigationService.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		946DE0812968DA740063C2D6 /* GameSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneView.swift; sourceTree = "<group>"; };
 		A78E77B91F925D8B00697176 /* MatrixHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixHelper.swift; sourceTree = "<group>"; };
 		A78E77BB1F925DBA00697176 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		A78E77BD1F925DD300697176 /* NavigationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationService.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				A78E77BF1F925E0600697176 /* PlaneSceneView.swift */,
+				946DE0812968DA740063C2D6 /* GameSceneView.swift */,
 				A7D607391F931B9900D6F46F /* Controllers */,
 			);
 			path = Airport;
@@ -276,6 +279,7 @@
 				A7D84CC91F9012E400E4FF72 /* AppDelegate.swift in Sources */,
 				A7D607291F930CA300D6F46F /* Mapable.swift in Sources */,
 				A7D6072F1F931A7B00D6F46F /* MKRouteStep+Extension.swift in Sources */,
+				946DE0822968DA740063C2D6 /* GameSceneView.swift in Sources */,
 				A7D6072B1F930DCB00D6F46F /* POIAnnotation.swift in Sources */,
 				A7D607251F93084800D6F46F /* CLLocation+Extension.swift in Sources */,
 			);
@@ -351,7 +355,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -403,7 +407,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -419,7 +423,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4SZP4Q326F;
 				INFOPLIST_FILE = Airport/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Froleeyo.Airport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -437,7 +441,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4SZP4Q326F;
 				INFOPLIST_FILE = Airport/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Froleeyo.Airport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
