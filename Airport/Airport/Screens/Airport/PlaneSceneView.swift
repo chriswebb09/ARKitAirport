@@ -67,7 +67,7 @@ class PlaneSceneView: ARSCNView {
         SCNTransaction.begin()
         SCNTransaction.animationDuration = 4
         planeNode.localTranslate(by: SCNVector3(x: 0, y: 0, z: -0.45))
-        let (x, y, z, w) = self.angleConversion(x: 0.25 * Float(Double.pi), y: 0, z: 0, w: 0)
+        let (x, y, z, w) = self.angleConversion(x: 0.35 * Float(Double.pi), y: 0, z: 0, w: 0)
         self.planeNode.localRotate(by: SCNQuaternion(x, y, z, w))
         self.planeNode.localTranslate(by: SCNVector3(x: 0, y: 0, z: -0.55))
         SCNTransaction.commit()
